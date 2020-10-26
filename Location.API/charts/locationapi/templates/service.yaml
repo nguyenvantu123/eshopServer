@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "locationapi.fullname" . }}
+  labels:
+    app: {{ template "locationapi.name" . }}
+    chart: {{ template "locationapi.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "locationapi.name" . }}
+    release: {{ .Release.Name }}

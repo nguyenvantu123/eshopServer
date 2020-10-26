@@ -1,0 +1,22 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
+ARG BUILD_CONFIGURATION=Debug
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_URLS=http://+:80
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+EXPOSE 80
+
+WORKDIR /src
+COPY ["Catalog.API/Catalog.API.csproj", "Catalog.API/"]
+COPY ["EventBus/EventBus.csproj", "EventBus/"]
+COPY ["EventBusRabbitMQ/EventBusRabbitMQ.csproj", "EventBusRabbitMQ/"]
+COPY ["EventBusServiceBus/EventBusServiceBus.csproj", "EventBusServiceBus/"]
+COPY ["IntegrationEventLogEF/IntegrationEventLogEF.csproj", "IntegrationEventLogEF/"]
+
+RUN dotnet restore "Catalog.API/Catalog.API.csproj"
+COPY . .
+WORKDIR "/src/Catalog.API"
+RUN dotnet build --no-restore "Catalog.API.csproj" -c $BUILD_CONFIGURATION
+
+RUN echo "exec dotnet run --no-build --no-launch-profile -c $BUILD_CONFIGURATION --" > /entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
