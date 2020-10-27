@@ -1,14 +1,14 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.eShopOnContainers.Services.Marketing.API.Model;
+using Microsoft.Extensions.Logging;
+using Polly;
+using Polly.Retry;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure
 {
-    using Microsoft.eShopOnContainers.Services.Marketing.API.Model;
-    using Microsoft.Extensions.Logging;
-    using Polly;
-    using Polly.Retry;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.SqlClient;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     public class MarketingContextSeed
     {

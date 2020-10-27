@@ -8,5 +8,7 @@ namespace Microsoft.eShopOnContainers.Services.Identity.API.Models.AccountViewMo
         public IEnumerable<string> ScopesConsented { get; set; }
         public bool RememberConsent { get; set; }
         public string ReturnUrl { get; set; }
+
+        public string Description { get; set; }
     }
 }

@@ -12,13 +12,13 @@
     public class LocationsRepository
         : ILocationsRepository
     {
-        private readonly LocationsContext _context;       
+        private readonly LocationsContext _context;
 
         public LocationsRepository(IOptions<LocationSettings> settings)
         {
             _context = new LocationsContext(settings);
-        }        
-        
+        }
+
         public async Task<Locations> GetAsync(int locationId)
         {
             var filter = Builders<Locations>.Filter.Eq("LocationId", locationId);
@@ -38,7 +38,7 @@
         public async Task<List<Locations>> GetLocationListAsync()
         {
             return await _context.Locations.Find(new BsonDocument()).ToListAsync();
-        }       
+        }
 
         public async Task<List<Locations>> GetCurrentUserRegionsListAsync(LocationRequest currentPosition)
         {
@@ -46,14 +46,15 @@
             var orderByDistanceQuery = new FilterDefinitionBuilder<Locations>().Near(x => x.Location, point);
             var withinAreaQuery = new FilterDefinitionBuilder<Locations>().GeoIntersects("Polygon", point);
             var filter = Builders<Locations>.Filter.And(orderByDistanceQuery, withinAreaQuery);
-            return await _context.Locations.Find(filter).ToListAsync(); 
-        }        
+            return await _context.Locations.Find(filter).ToListAsync();
+        }
 
         public async Task AddUserLocationAsync(UserLocation location)
         {
             await _context.UserLocation.InsertOneAsync(location);
         }
 
+        [System.Obsolete]
         public async Task UpdateUserLocationAsync(UserLocation userLocation)
         {
             await _context.UserLocation.ReplaceOneAsync(

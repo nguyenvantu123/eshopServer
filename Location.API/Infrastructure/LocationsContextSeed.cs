@@ -13,6 +13,8 @@
     public class LocationsContextSeed
     {
         private static LocationsContext ctx;
+
+        [System.Obsolete]
         public static async Task SeedAsync(IApplicationBuilder applicationBuilder, ILoggerFactory loggerFactory)
         {
             var config = applicationBuilder
@@ -40,7 +42,7 @@
                 Code = "NA",
                 Description = "North America",
                 LocationId = 1
-            }; 
+            };
             us.SetLocation(-103.219329, 48.803281);
             us.SetArea(GetNorthAmericaPoligon());
             await ctx.Locations.InsertOneAsync(us);
@@ -127,7 +129,7 @@
                 Description = "South America",
                 LocationId = 7
             };
-            sa.SetLocation(-60.328704, -16.809748); 
+            sa.SetLocation(-60.328704, -16.809748);
             sa.SetArea(GetSouthAmericaPoligon());
             await ctx.Locations.InsertOneAsync(sa);
         }
@@ -140,7 +142,7 @@
                 Description = "Africa",
                 LocationId = 8
             };
-            afc.SetLocation(19.475383, 13.063667); 
+            afc.SetLocation(19.475383, 13.063667);
             afc.SetArea(GetAfricaPoligon());
             await ctx.Locations.InsertOneAsync(afc);
         }
@@ -153,7 +155,7 @@
                 Description = "Europe",
                 LocationId = 9
             };
-            eu.SetLocation(13.147258, 49.947844); 
+            eu.SetLocation(13.147258, 49.947844);
             eu.SetArea(GetEuropePoligon());
             await ctx.Locations.InsertOneAsync(eu);
         }
@@ -184,6 +186,7 @@
             await ctx.Locations.InsertOneAsync(aus);
         }
 
+        [System.Obsolete]
         static async Task SetIndexes()
         {
             // Set location indexes

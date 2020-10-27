@@ -1,22 +1,37 @@
-﻿using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Services;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.eShopOnContainers.Services.Marketing.API.ViewModel;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.eShopOnContainers.Services.Marketing.API.Dto;
+using Microsoft.eShopOnContainers.Services.Marketing.API.Model;
+using Microsoft.Extensions.Options;
+using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure;
+using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Repositories;
+using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace Microsoft.eShopOnContainers.Services.Marketing.API.Controllers
 {
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using Infrastructure.Repositories;
-    using AspNetCore.Mvc;
-    using Infrastructure;
-    using System.Threading.Tasks;
-    using Model;
-    using EntityFrameworkCore;
-    using Dto;
-    using AspNetCore.Authorization;
-    using Extensions.Options;
-    using Microsoft.eShopOnContainers.Services.Marketing.API.ViewModel;
-    using Microsoft.AspNetCore.Http;
-    using System.Net;
+    //using System;
+    //using System.Linq;
+    //using System.Collections.Generic;
+    //using Infrastructure.Repositories;
+    //using AspNetCore.Mvc;
+    //using Infrastructure;
+    //using System.Threading.Tasks;
+    //using Model;
+    //using EntityFrameworkCore;
+    //using Dto;
+    //using AspNetCore.Authorization;
+    //using Extensions.Options;
+    //using Microsoft.eShopOnContainers.Services.Marketing.API.ViewModel;
+    //using Microsoft.AspNetCore.Http;
+    //using System.Net;
+    //using Infrastructure.Services;
 
     [Route("api/v1/[controller]")]
     [Authorize]
@@ -140,14 +155,14 @@ namespace Microsoft.eShopOnContainers.Services.Marketing.API.Controllers
 
         [HttpGet("user")]
         [ProducesResponseType(typeof(PaginatedItemsViewModel<CampaignDTO>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<PaginatedItemsViewModel<CampaignDTO>>> GetCampaignsByUserIdAsync( int pageSize = 10, int pageIndex = 0)
+        public async Task<ActionResult<PaginatedItemsViewModel<CampaignDTO>>> GetCampaignsByUserIdAsync(int pageSize = 10, int pageIndex = 0)
         {
             var userId = _identityService.GetUserIdentity();
 
             var marketingData = await _marketingDataRepository.GetAsync(userId.ToString());
 
             var campaignDtoList = new List<CampaignDTO>();
-            
+
             if (marketingData != null)
             {
                 var locationIdCandidateList = marketingData.Locations.Select(x => x.LocationId);

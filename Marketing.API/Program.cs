@@ -1,14 +1,15 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using System;
+using System.IO;
+using WebHost.Customization;
+
+namespace Microsoft.eShopOnContainers.Services.Marketing.API
 {
-    using AspNetCore.Hosting;
-    using Microsoft.AspNetCore;
-    using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-    using Serilog;
-    using System;
-    using System.IO;
 
     public class Program
     {
@@ -53,7 +54,7 @@
         }
 
         private static IWebHost BuildWebHost(IConfiguration configuration, string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+           Microsoft.AspNetCore.WebHost.CreateDefaultBuilder(args)
                 .CaptureStartupErrors(false)
                 .ConfigureAppConfiguration(x => x.AddConfiguration(configuration))
                 .UseStartup<Startup>()

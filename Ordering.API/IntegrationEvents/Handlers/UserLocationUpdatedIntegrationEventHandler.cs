@@ -1,15 +1,17 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.IntegrationEvents.Handlers
-{
-    using Marketing.API.IntegrationEvents.Events;
-    using Marketing.API.Model;
-    using Microsoft.eShopOnContainers.BuildingBlocks.EventBus.Abstractions;
-    using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Repositories;
-    using Microsoft.Extensions.Logging;
-    using Serilog.Context;
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+﻿using EventBus.Abstraction;
+using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Repositories;
+using Microsoft.eShopOnContainers.Services.Marketing.API.IntegrationEvents.Events;
+using Microsoft.eShopOnContainers.Services.Marketing.API.Model;
+using Microsoft.Extensions.Logging;
+using Serilog.Context;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
+
+namespace Microsoft.eShopOnContainers.Services.Marketing.API.IntegrationEvents.Handlers
+{
+    
     public class UserLocationUpdatedIntegrationEventHandler 
         : IIntegrationEventHandler<UserLocationUpdatedIntegrationEvent>
     {
