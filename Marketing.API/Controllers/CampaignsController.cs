@@ -1,23 +1,23 @@
-﻿using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Services;
+﻿using Marketing.API.Infrastructure.Services;
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Marketing.API.ViewModel;
+using Microsoft.AspNetCore.Http;
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Marketing.API.Infrastructure;
+using Marketing.API.Infrastructure.Repositories;
+using Microsoft.Extensions.Options;
+using Marketing.API.Dto;
+using Microsoft.EntityFrameworkCore;
+using Marketing.API.Model;
 
-namespace Microsoft.eShopOnContainers.Services.Marketing.API.Controllers
+namespace Marketing.API.Controllers
 {
-    using System;
-    using System.Linq;
-    using System.Collections.Generic;
-    using Infrastructure.Repositories;
-    using AspNetCore.Mvc;
-    using Infrastructure;
-    using System.Threading.Tasks;
-    using Model;
-    using EntityFrameworkCore;
-    using Dto;
-    using AspNetCore.Authorization;
-    using Extensions.Options;
-    using Microsoft.eShopOnContainers.Services.Marketing.API.ViewModel;
-    using Microsoft.AspNetCore.Http;
-    using System.Net;
-
+    
     [Route("api/v1/[controller]")]
     [Authorize]
     [ApiController]

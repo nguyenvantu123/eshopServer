@@ -1,8 +1,9 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Controllers
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+
+namespace Marketing.API.Controllers
 {
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc;
-    using System.IO;
 
     [ApiController]
     public class PicController : ControllerBase
@@ -20,8 +21,8 @@
             var webRoot = _env.WebRootPath;
             var path = Path.Combine(webRoot, campaignId + ".png");
 
-            var buffer = System.IO.File.ReadAllBytes(path); 
-            
+            var buffer = System.IO.File.ReadAllBytes(path);
+
             return File(buffer, "image/png");
         }
     }

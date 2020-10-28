@@ -1,7 +1,7 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.ActionResults
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+namespace Marketing.API.Infrastructure.ActionResults
 {
-    using AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
 
     public class InternalServerErrorObjectResult : ObjectResult
     {

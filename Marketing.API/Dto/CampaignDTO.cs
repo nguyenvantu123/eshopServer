@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Dto
+﻿namespace Marketing.API.Dto
 {
     using System;
 

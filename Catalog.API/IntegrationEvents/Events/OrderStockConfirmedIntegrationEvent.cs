@@ -1,7 +1,7 @@
 ﻿
 using EventBus.Event;
 
-namespace Microsoft.eShopOnContainers.Services.Catalog.API.IntegrationEvents.Events
+namespace Catalog.API.IntegrationEvents.Events
 {
 
     public class OrderStockConfirmedIntegrationEvent : IntegrationEvent

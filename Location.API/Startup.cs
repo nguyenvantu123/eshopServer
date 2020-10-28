@@ -17,12 +17,12 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.ServiceBus;
-using Microsoft.eShopOnContainers.Services.Locations.API;
-using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure;
-using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Filters;
-using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Middlewares;
-using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Repositories;
-using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Services;
+using Locations.API;
+using Locations.API.Infrastructure;
+using Locations.API.Infrastructure.Filters;
+using Locations.API.Infrastructure.Middlewares;
+using Locations.API.Infrastructure.Repositories;
+using Locations.API.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -31,7 +31,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RabbitMQ.Client;
 
-namespace Location.API
+namespace Locations.API
 {
     public class Startup
     {

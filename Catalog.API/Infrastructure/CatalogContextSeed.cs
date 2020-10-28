@@ -1,26 +1,27 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Catalog.API.Infrastructure
+﻿using Catalog.API.Model;
+using global::Catalog.API;
+using global::Catalog.API.Extensions;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Polly;
+using Polly.Retry;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Globalization;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace Catalog.API.Infrastructure
 {
-    using Extensions.Logging;
-    using global::Catalog.API;
-    using global::Catalog.API.Extensions;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Options;
-    using Model;
-    using Polly;
-    using Polly.Retry;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.SqlClient;
-    using System.Globalization;
-    using System.IO;
-    using System.IO.Compression;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
 
     public class CatalogContextSeed
     {
-        public async Task SeedAsync(CatalogContext context,IWebHostEnvironment env,IOptions<CatalogSettings> settings,ILogger<CatalogContextSeed> logger)
+        public async Task SeedAsync(CatalogContext context, IWebHostEnvironment env, IOptions<CatalogSettings> settings, ILogger<CatalogContextSeed> logger)
         {
             var policy = CreatePolicy(logger, nameof(CatalogContextSeed));
 
@@ -74,7 +75,7 @@
             try
             {
                 string[] requiredHeaders = { "catalogbrand" };
-                csvheaders = GetHeaders( csvFileCatalogBrands, requiredHeaders );
+                csvheaders = GetHeaders(csvFileCatalogBrands, requiredHeaders);
             }
             catch (Exception ex)
             {
@@ -129,7 +130,7 @@
             try
             {
                 string[] requiredHeaders = { "catalogtype" };
-                csvheaders = GetHeaders( csvFileCatalogTypes, requiredHeaders );
+                csvheaders = GetHeaders(csvFileCatalogTypes, requiredHeaders);
             }
             catch (Exception ex)
             {
@@ -184,7 +185,7 @@
             {
                 string[] requiredHeaders = { "catalogtypename", "catalogbrandname", "description", "name", "price", "pictureFileName" };
                 string[] optionalheaders = { "availablestock", "restockthreshold", "maxstockthreshold", "onreorder" };
-                csvheaders = GetHeaders(csvFileCatalogItems, requiredHeaders, optionalheaders );
+                csvheaders = GetHeaders(csvFileCatalogItems, requiredHeaders, optionalheaders);
             }
             catch (Exception ex)
             {
@@ -197,7 +198,7 @@
 
             return File.ReadAllLines(csvFileCatalogItems)
                         .Skip(1) // skip header row
-                        .Select(row => Regex.Split(row, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)") )
+                        .Select(row => Regex.Split(row, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"))
                         .SelectTry(column => CreateCatalogItem(column, csvheaders, catalogTypeIdLookup, catalogBrandIdLookup))
                         .OnCaughtException(ex => { logger.LogError(ex, "EXCEPTION ERROR: {Message}", ex.Message); return null; })
                         .Where(x => x != null);
@@ -244,7 +245,7 @@
                 string availableStockString = column[availableStockIndex].Trim('"').Trim();
                 if (!String.IsNullOrEmpty(availableStockString))
                 {
-                    if ( int.TryParse(availableStockString, out int availableStock))
+                    if (int.TryParse(availableStockString, out int availableStock))
                     {
                         catalogItem.AvailableStock = availableStock;
                     }
@@ -371,7 +372,7 @@
             }
         }
 
-        private AsyncRetryPolicy CreatePolicy( ILogger<CatalogContextSeed> logger, string prefix,int retries = 3)
+        private AsyncRetryPolicy CreatePolicy(ILogger<CatalogContextSeed> logger, string prefix, int retries = 3)
         {
             return Policy.Handle<SqlException>().
                 WaitAndRetryAsync(

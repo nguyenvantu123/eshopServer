@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Catalog.API;
 using EventBus.Abstraction;
-using Microsoft.eShopOnContainers.Services.Catalog.API.Infrastructure;
-using Microsoft.eShopOnContainers.Services.Catalog.API.IntegrationEvents.Events;
+using Catalog.API.Infrastructure;
+using Catalog.API.IntegrationEvents.Events;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
 
-namespace Microsoft.eShopOnContainers.Services.Catalog.API.IntegrationEvents.EventHandling
+namespace Catalog.API.IntegrationEvents.EventHandling
 {
 
     public class OrderStatusChangedToPaidIntegrationEventHandler : 

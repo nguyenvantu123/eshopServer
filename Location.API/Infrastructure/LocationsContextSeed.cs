@@ -1,14 +1,16 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure
+﻿using Microsoft.AspNetCore.Builder;
+using Locations.API.Model;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using MongoDB.Driver.GeoJsonObjectModel;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+
+namespace Locations.API.Infrastructure
 {
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.eShopOnContainers.Services.Locations.API.Model;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
-    using MongoDB.Driver;
-    using MongoDB.Driver.GeoJsonObjectModel;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     public class LocationsContextSeed
     {
@@ -22,7 +24,7 @@
 
             ctx = new LocationsContext(config);
 
-            if (!ctx.Locations.Database.GetCollection<Locations>(nameof(Locations)).AsQueryable().Any())
+            if (!ctx.Locations.Database.GetCollection<Location>(nameof(Locations)).AsQueryable().Any())
             {
                 await SetIndexes();
                 await SetNorthAmerica();
@@ -37,7 +39,7 @@
 
         static async Task SetNorthAmerica()
         {
-            var us = new Locations()
+            var us = new Location()
             {
                 Code = "NA",
                 Description = "North America",
@@ -51,7 +53,7 @@
 
         static async Task SetUSLocations(string parentId)
         {
-            var us = new Locations()
+            var us = new Location()
             {
                 Parent_Id = parentId,
                 Code = "US",
@@ -66,7 +68,7 @@
 
         static async Task SetWashingtonLocations(string parentId)
         {
-            var wht = new Locations()
+            var wht = new Location()
             {
                 Parent_Id = parentId,
                 Code = "WHT",
@@ -82,7 +84,7 @@
 
         static async Task SetSeattleLocations(string parentId)
         {
-            var stl = new Locations()
+            var stl = new Location()
             {
                 Parent_Id = parentId,
                 Code = "SEAT",
@@ -96,7 +98,7 @@
 
         static async Task SetRedmondLocations(string parentId)
         {
-            var rdm = new Locations()
+            var rdm = new Location()
             {
                 Parent_Id = parentId,
                 Code = "REDM",
@@ -110,7 +112,7 @@
 
         static async Task SetBarcelonaLocations()
         {
-            var bcn = new Locations()
+            var bcn = new Location()
             {
                 Code = "BCN",
                 Description = "Barcelona",
@@ -123,7 +125,7 @@
 
         static async Task SetSouthAmerica()
         {
-            var sa = new Locations()
+            var sa = new Location()
             {
                 Code = "SA",
                 Description = "South America",
@@ -136,7 +138,7 @@
 
         static async Task SetAfrica()
         {
-            var afc = new Locations()
+            var afc = new Location()
             {
                 Code = "AFC",
                 Description = "Africa",
@@ -149,7 +151,7 @@
 
         static async Task SetEurope()
         {
-            var eu = new Locations()
+            var eu = new Location()
             {
                 Code = "EU",
                 Description = "Europe",
@@ -162,7 +164,7 @@
 
         static async Task SetAsia()
         {
-            var asa = new Locations()
+            var asa = new Location()
             {
                 Code = "AS",
                 Description = "Asia",
@@ -175,7 +177,7 @@
 
         static async Task SetAustralia()
         {
-            var aus = new Locations()
+            var aus = new Location()
             {
                 Code = "AUS",
                 Description = "Australia",
@@ -190,8 +192,8 @@
         static async Task SetIndexes()
         {
             // Set location indexes
-            var builder = Builders<Locations>.IndexKeys;
-            var keys = builder.Geo2DSphere(prop => prop.Location);
+            var builder = Builders<Location>.IndexKeys;
+            var keys = builder.Geo2DSphere(prop => prop.Locations);
             await ctx.Locations.Indexes.CreateOneAsync(keys);
         }
 

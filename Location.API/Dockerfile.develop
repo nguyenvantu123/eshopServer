@@ -6,12 +6,12 @@ ENV DOTNET_USE_POLLING_FILE_WATCHER=true
 EXPOSE 80
 
 WORKDIR /src
-COPY ["Location.API/Location.API.csproj", "Location.API/"]
+COPY ["Locations.API/Locations.API.csproj", "Locations.API/"]
 
-RUN dotnet restore "Location.API/Location.API.csproj"
+RUN dotnet restore "Locations.API/Locations.API.csproj"
 COPY . .
-WORKDIR "/src/Location.API"
-RUN dotnet build --no-restore "Location.API.csproj" -c $BUILD_CONFIGURATION
+WORKDIR "/src/Locations.API"
+RUN dotnet build --no-restore "Locations.API.csproj" -c $BUILD_CONFIGURATION
 
 RUN echo "exec dotnet run --no-build --no-launch-profile -c $BUILD_CONFIGURATION --" > /entrypoint.sh
 

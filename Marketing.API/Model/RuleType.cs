@@ -1,9 +1,10 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Model
+﻿using Marketing.API.Infrastructure.Exceptions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Marketing.API.Model
 {
-    using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Exceptions;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public sealed class RuleType
     {

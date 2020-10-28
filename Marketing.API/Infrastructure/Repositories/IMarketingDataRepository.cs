@@ -1,7 +1,8 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Repositories
+﻿using Marketing.API.Model;
+using System.Threading.Tasks;
+
+namespace Marketing.API.Infrastructure.Repositories
 {
-    using Model;
-    using System.Threading.Tasks;
 
     public interface IMarketingDataRepository
     {

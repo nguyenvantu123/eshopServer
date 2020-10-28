@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Locations.API.IntegrationEvents.Events
+﻿namespace Locations.API.IntegrationEvents.Events
 {
     using EventBus.Event;
     using Locations.API.Model;

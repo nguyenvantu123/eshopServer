@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopOnContainers.Services.Catalog.API.Infrastructure;
+using Catalog.API.Infrastructure;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Microsoft.eShopOnContainers.Services.Catalog.API.Controllers
+namespace Catalog.API.Controllers
 {
     [ApiController]
     public class PicController : ControllerBase

@@ -1,12 +1,15 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Locations.API.Model
-{
-    using global::Locations.API.Model.Core;
-    using MongoDB.Bson;
-    using MongoDB.Bson.Serialization.Attributes;
-    using MongoDB.Driver.GeoJsonObjectModel;
-    using System.Collections.Generic;
+﻿using Locations.API.Model.Core;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver.GeoJsonObjectModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-    public class Locations
+namespace Locations.API.Model
+{
+    public class Location
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -18,7 +21,7 @@
         public string Description { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public LocationPoint Location { get; private set; }
+        public LocationPoint Locations { get; private set; }
         public LocationPolygon Polygon { get; private set; }
 
         // Temporal commented in previewVersion7 of netcore and 2.9.0-beta2 of Mongo packages, review in next versions
@@ -31,7 +34,7 @@
         {
             Latitude = lat;
             Longitude = lon;
-            Location = new LocationPoint(lon, lat);
+            Locations = new LocationPoint(lon, lat);
         }
 
         private void SetPolygon(List<GeoJson2DGeographicCoordinates> coordinatesList)

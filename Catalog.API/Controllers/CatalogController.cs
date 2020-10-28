@@ -3,9 +3,9 @@ using Catalog.API.IntegrationEvents;
 using Catalog.API.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopOnContainers.Services.Catalog.API.Infrastructure;
-using Microsoft.eShopOnContainers.Services.Catalog.API.IntegrationEvents.Events;
-using Microsoft.eShopOnContainers.Services.Catalog.API.Model;
+using Catalog.API.Infrastructure;
+using Catalog.API.IntegrationEvents.Events;
+using Catalog.API.Model;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopOnContainers.Services.Catalog.API.Controllers
+namespace Catalog.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]

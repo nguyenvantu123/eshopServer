@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Model
+﻿namespace Marketing.API.Model
 {
     using System;
     using System.Collections.Generic;

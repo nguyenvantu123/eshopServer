@@ -1,10 +1,11 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Catalog.API.Infrastructure
-{
-    using Microsoft.EntityFrameworkCore;
-    using EntityConfigurations;
-    using Model;
-    using Microsoft.EntityFrameworkCore.Design;
+﻿using Catalog.API.Infrastructure.EntityConfigurations;
+using Catalog.API.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
+namespace Catalog.API.Infrastructure
+{
+   
     public class CatalogContext : DbContext
     {
         public CatalogContext(DbContextOptions<CatalogContext> options) : base(options)
@@ -28,7 +29,7 @@
         public CatalogContext CreateDbContext(string[] args)
         {
             var optionsBuilder =  new DbContextOptionsBuilder<CatalogContext>()
-                .UseSqlServer("Server=.;Initial Catalog=Microsoft.eShopOnContainers.Services.CatalogDb;Integrated Security=true");
+                .UseSqlServer("Server=.;Initial Catalog=CatalogDb;Integrated Security=true");
 
             return new CatalogContext(optionsBuilder.Options);
         }

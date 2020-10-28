@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure;
+using Marketing.API.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -8,7 +8,7 @@ using System;
 using System.IO;
 using WebHost.Customization;
 
-namespace Microsoft.eShopOnContainers.Services.Marketing.API
+namespace Marketing.API
 {
 
     public class Program

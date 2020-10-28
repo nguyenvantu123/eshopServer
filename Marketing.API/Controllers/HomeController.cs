@@ -1,4 +1,4 @@
-namespace Microsoft.eShopOnContainers.Services.Marketing.API.Controllers
+namespace Marketing.API.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
 

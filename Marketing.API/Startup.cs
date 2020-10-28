@@ -1,39 +1,40 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using EventBus;
+using EventBus.Abstraction;
+using EventBusRabbitMQ;
+using EventBusServiceBus;
+using HealthChecks.UI.Client;
+using Marketing.API.IntegrationEvents.Handlers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Marketing.API.Controllers;
+using Marketing.API.Infrastructure.Middlewares;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.OpenApi.Models;
+using RabbitMQ.Client;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Marketing.API.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Azure.ServiceBus;
+using Marketing.API.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Http;
+using Marketing.API.Infrastructure.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Marketing.API.Infrastructure.Filters;
+using Marketing.API.IntegrationEvents.Events;
+
+namespace Marketing.API
 {
-    using AspNetCore.Builder;
-    using AspNetCore.Hosting;
-    using AspNetCore.Http;
-    using Autofac;
-    using Autofac.Extensions.DependencyInjection;
-    using Azure.ServiceBus;
-    using EntityFrameworkCore;
-    using EventBus;
-    using EventBus.Abstraction;
-    using EventBusRabbitMQ;
-    using EventBusServiceBus;
-    using Extensions.Configuration;
-    using Extensions.DependencyInjection;
-    using Extensions.Logging;
-    using HealthChecks.UI.Client;
-    using Infrastructure;
-    using Infrastructure.Filters;
-    using Infrastructure.Repositories;
-    using Infrastructure.Services;
-    using IntegrationEvents.Events;
-    using Marketing.API.IntegrationEvents.Handlers;
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
-    using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore.Diagnostics;
-    using Microsoft.eShopOnContainers.Services.Marketing.API.Controllers;
-    using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Middlewares;
-    using Microsoft.Extensions.Diagnostics.HealthChecks;
-    using Microsoft.OpenApi.Models;
-    using RabbitMQ.Client;
-    using System;
-    using System.Collections.Generic;
-    using System.IdentityModel.Tokens.Jwt;
-    using System.Reflection;
 
     public class Startup
     {

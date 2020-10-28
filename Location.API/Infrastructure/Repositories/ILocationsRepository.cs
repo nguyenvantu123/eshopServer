@@ -1,19 +1,21 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Repositories
+﻿using Locations.API.Model;
+using Locations.API.ViewModel;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+
+namespace Locations.API.Infrastructure.Repositories
 {
-    using Microsoft.eShopOnContainers.Services.Locations.API.Model;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using ViewModel;
 
     public interface ILocationsRepository
     {        
-        Task<Locations> GetAsync(int locationId);
+        Task<Location> GetAsync(int locationId);
 
-        Task<List<Locations>> GetLocationListAsync();
+        Task<List<Location>> GetLocationListAsync();
 
         Task<UserLocation> GetUserLocationAsync(string userId);
 
-        Task<List<Locations>> GetCurrentUserRegionsListAsync(LocationRequest currentPosition);
+        Task<List<Location>> GetCurrentUserRegionsListAsync(LocationRequest currentPosition);
 
         Task AddUserLocationAsync(UserLocation location);
 

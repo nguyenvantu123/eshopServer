@@ -1,45 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>20ab8047-d09e-4c47-8013-607225afb9c4</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Kubernetes.Tools.Targets" Version="1.1.0" />
-    <PackageReference Include="MongoDB.Driver.Core" Version="2.11.3" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
-    <ProjectReference Include="..\EventBusServiceBus\EventBusServiceBus.csproj" />
-    <ProjectReference Include="..\WebHost.Customization\WebHost.Customization.csproj" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Setup\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Microsoft.OpenApi">
-      <HintPath>..\lib\Microsoft.OpenApi.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\lib\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\lib\MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="Polly">
-      <HintPath>..\lib\Polly.dll</HintPath>
-    </Reference>
-    <Reference Include="Serilog">
-      <HintPath>..\lib\Serilog.dll</HintPath>
-    </Reference>
-    <Reference Include="Swashbuckle.AspNetCore.SwaggerGen">
-      <HintPath>..\lib\Swashbuckle.AspNetCore.SwaggerGen.dll</HintPath>
-    </Reference>
-  </ItemGroup>
 
 </Project>

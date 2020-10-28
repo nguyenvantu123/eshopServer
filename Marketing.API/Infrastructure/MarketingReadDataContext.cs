@@ -1,8 +1,9 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure
+﻿using Marketing.API.Model;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+
+namespace Marketing.API.Infrastructure
 {
-    using Microsoft.eShopOnContainers.Services.Marketing.API.Model;
-    using Microsoft.Extensions.Options;
-    using MongoDB.Driver;
 
     public class MarketingReadDataContext
     {

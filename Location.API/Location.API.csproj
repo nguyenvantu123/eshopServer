@@ -5,6 +5,7 @@
     <UserSecretsId>96e27e6b-fd25-41f5-8af3-3c876d12445e</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <RootNamespace>Locations.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,6 +38,11 @@
     <ProjectReference Include="..\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\EventBusServiceBus\EventBusServiceBus.csproj" />
     <ProjectReference Include="..\EventBus\EventBus.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Application\" />
   </ItemGroup>
 
 </Project>

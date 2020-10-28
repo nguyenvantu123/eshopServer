@@ -1,16 +1,16 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Services
+﻿using EventBus.Abstraction;
+using Locations.API;
+using Locations.API.Infrastructure.Exceptions;
+using Locations.API.Infrastructure.Repositories;
+using Locations.API.IntegrationEvents.Events;
+using Locations.API.Model;
+using Locations.API.ViewModel;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+namespace Locations.API.Infrastructure.Services
 {
-    using EventBus.Abstraction;
-    using Location.API;
-    using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Exceptions;
-    using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Repositories;
-    using Microsoft.eShopOnContainers.Services.Locations.API.IntegrationEvents.Events;
-    using Microsoft.eShopOnContainers.Services.Locations.API.Model;
-    using Microsoft.eShopOnContainers.Services.Locations.API.ViewModel;
-    using Microsoft.Extensions.Logging;
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     public class LocationsService : ILocationsService
     {
@@ -28,7 +28,7 @@
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<Locations> GetLocationAsync(int locationId)
+        public async Task<Location> GetLocationAsync(int locationId)
         {
             return await _locationsRepository.GetAsync(locationId);
         }
@@ -38,7 +38,7 @@
             return await _locationsRepository.GetUserLocationAsync(userId);
         }
 
-        public async Task<List<Locations>> GetAllLocationAsync()
+        public async Task<List<Location>> GetAllLocationAsync()
         {
             return await _locationsRepository.GetLocationListAsync();
         }
@@ -69,7 +69,7 @@
             return true;
         }
 
-        private void PublishNewUserLocationPositionIntegrationEvent(string userId, List<Locations> newLocations)
+        private void PublishNewUserLocationPositionIntegrationEvent(string userId, List<Location> newLocations)
         {
             var newUserLocations = MapUserLocationDetails(newLocations);
             var @event = new UserLocationUpdatedIntegrationEvent(userId, newUserLocations);
@@ -79,7 +79,7 @@
             _eventBus.Publish(@event);
         }
 
-        private List<UserLocationDetails> MapUserLocationDetails(List<Locations> newLocations)
+        private List<UserLocationDetails> MapUserLocationDetails(List<Location> newLocations)
         {
             var result = new List<UserLocationDetails>();
             newLocations.ForEach(location =>

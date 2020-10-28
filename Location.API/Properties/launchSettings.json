@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Location.API": {
+    "Locations.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -1,7 +1,7 @@
 ﻿using EventBus.Event;
 using System.Collections.Generic;
 
-namespace Microsoft.eShopOnContainers.Services.Catalog.API.IntegrationEvents.Events
+namespace Catalog.API.IntegrationEvents.Events
 {
 
     public class OrderStockRejectedIntegrationEvent : IntegrationEvent

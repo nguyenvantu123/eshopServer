@@ -1,8 +1,12 @@
-namespace Microsoft.eShopOnContainers.Services.Marketing.API.Controllers
-{
-    using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-    // GET: /<controller>/
+namespace Ordering.API.Controllers
+{
     public class HomeController : Controller
     {
         public IActionResult Index()

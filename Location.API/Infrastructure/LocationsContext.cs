@@ -1,8 +1,9 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure
+﻿using Locations.API.Model;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+
+namespace Locations.API.Infrastructure
 {
-    using Microsoft.eShopOnContainers.Services.Locations.API.Model;
-    using Microsoft.Extensions.Options;
-    using MongoDB.Driver;
 
     public class LocationsContext
     {
@@ -23,11 +24,11 @@
             }
         }
 
-        public IMongoCollection<Locations> Locations
+        public IMongoCollection<Location> Locations
         {
             get
             {
-                return _database.GetCollection<Locations>("Locations");
+                return _database.GetCollection<Location>("Locations");
             }
         }       
     }

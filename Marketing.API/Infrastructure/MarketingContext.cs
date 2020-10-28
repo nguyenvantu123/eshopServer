@@ -1,12 +1,13 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure
+﻿using System;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Marketing.API.Model;
+using Microsoft.Extensions.Configuration;
+using Marketing.API.Infrastructure.EntityConfigurations;
+
+namespace Marketing.API.Infrastructure
 {
-    using System;
-    using System.IO;
-    using EntityConfigurations;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Design;
-    using Microsoft.eShopOnContainers.Services.Marketing.API.Model;
-    using Microsoft.Extensions.Configuration;
 
     public class MarketingContext : DbContext
     {

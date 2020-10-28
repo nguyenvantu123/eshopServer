@@ -1,8 +1,9 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Locations.API.Model
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+
+namespace Locations.API.Model
 {
-    using MongoDB.Bson;
-    using MongoDB.Bson.Serialization.Attributes;
-    using System;
 
     public class UserLocation
     {

@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
-using GrpcCatalog;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopOnContainers.Services.Catalog.API;
-using Microsoft.eShopOnContainers.Services.Catalog.API.Infrastructure;
-using Microsoft.eShopOnContainers.Services.Catalog.API.Model;
+using Catalog.API.Infrastructure;
+using Catalog.API.Model;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Catalog.API;
-
+using static GrpcCatalog.Catalog;
+using GrpcCatalog;
 
 namespace Catalog.API.Grpc
 {
-    public class CatalogService : GrpcCatalog.Catalog.CatalogBase
+    public class CatalogService : CatalogBase
     {
         private readonly CatalogContext _catalogContext;
         private readonly CatalogSettings _settings;

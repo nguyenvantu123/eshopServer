@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.ViewModel
+﻿namespace Marketing.API.ViewModel
 {
     using System.Collections.Generic;
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
-using Microsoft.eShopOnContainers.Services.Marketing.API.Model;
+using Marketing.API.Model;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Retry;
@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure
+namespace Marketing.API.Infrastructure
 {
 
     public class MarketingContextSeed

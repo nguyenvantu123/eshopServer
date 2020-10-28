@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Services;
-using Microsoft.eShopOnContainers.Services.Locations.API.Model;
-using Microsoft.eShopOnContainers.Services.Locations.API.ViewModel;
+using Locations.API.Infrastructure.Services;
+using Locations.API.Model;
+using Locations.API.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -36,8 +36,8 @@ namespace Locations.API.Controllers
         //GET api/v1/[controller]/
         [Route("")]
         [HttpGet]
-        [ProducesResponseType(typeof(List<Microsoft.eShopOnContainers.Services.Locations.API.Model.Locations>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<List<Microsoft.eShopOnContainers.Services.Locations.API.Model.Locations>>> GetAllLocationsAsync()
+        [ProducesResponseType(typeof(List<Location>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Location>>> GetAllLocationsAsync()
         {
             return await _locationsService.GetAllLocationAsync();
         }
@@ -45,8 +45,8 @@ namespace Locations.API.Controllers
         //GET api/v1/[controller]/1
         [Route("{locationId}")]
         [HttpGet]
-        [ProducesResponseType(typeof(Microsoft.eShopOnContainers.Services.Locations.API.Model.Locations), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Microsoft.eShopOnContainers.Services.Locations.API.Model.Locations>> GetLocationAsync(int locationId)
+        [ProducesResponseType(typeof(Location), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Location>> GetLocationAsync(int locationId)
         {
             return await _locationsService.GetLocationAsync(locationId);
         }

@@ -1,13 +1,14 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Filters
+﻿using Microsoft.AspNetCore.Mvc;
+using global::Marketing.API.Infrastructure.Exceptions;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Marketing.API.Infrastructure.ActionResults;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System.Net;
+
+namespace Marketing.API.Infrastructure.Filters
 {
-    using AspNetCore.Mvc;
-    using global::Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Exceptions;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc.Filters;
-    using Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.ActionResults;
-    using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Logging;
-    using System.Net;
 
     public class HttpGlobalExceptionFilter : IExceptionFilter
     {
@@ -26,7 +27,7 @@
                 context.Exception,
                 context.Exception.Message);
 
-            if (context.Exception.GetType() == typeof(MarketingDomainException)) 
+            if (context.Exception.GetType() == typeof(MarketingDomainException))
             {
                 var json = new JsonErrorResponse
                 {
@@ -53,7 +54,7 @@
                 // Result asigned to a result object but in destiny the response is empty. This is a known bug of .net core 1.1
                 // It will be fixed in .net core 1.1.2. See https://github.com/aspnet/Mvc/issues/5594 for more information
                 context.Result = new InternalServerErrorObjectResult(json);
-                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;                
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             }
             context.ExceptionHandled = true;
         }

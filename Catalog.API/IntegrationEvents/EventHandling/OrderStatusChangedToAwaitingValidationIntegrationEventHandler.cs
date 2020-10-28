@@ -6,11 +6,11 @@ using Serilog.Context;
 using Microsoft.Extensions.Logging;
 using EventBus.Event;
 using EventBus.Abstraction;
-using Microsoft.eShopOnContainers.Services.Catalog.API.IntegrationEvents.Events;
-using Microsoft.eShopOnContainers.Services.Catalog.API.Infrastructure;
+using Catalog.API.IntegrationEvents.Events;
+using Catalog.API.Infrastructure;
 using Catalog.API;
 
-namespace Microsoft.eShopOnContainers.Services.Catalog.API.IntegrationEvents.EventHandling
+namespace Catalog.API.IntegrationEvents.EventHandling
 {
   
     public class OrderStatusChangedToAwaitingValidationIntegrationEventHandler : 

@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Services
+﻿namespace Marketing.API.Infrastructure.Services
 {
     public interface IIdentityService
     {

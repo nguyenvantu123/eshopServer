@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Microsoft.eShopOnContainers.Services.Marketing.API.Dto
+namespace Marketing.API.Dto
 {
     public class UserLocationDTO
     {

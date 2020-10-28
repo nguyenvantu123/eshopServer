@@ -1,9 +1,9 @@
-﻿using Microsoft.eShopOnContainers.Services.Marketing.API.Model;
+﻿using Marketing.API.Model;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Repositories
+namespace Marketing.API.Infrastructure.Repositories
 {
     public class MarketingDataRepository
         : IMarketingDataRepository

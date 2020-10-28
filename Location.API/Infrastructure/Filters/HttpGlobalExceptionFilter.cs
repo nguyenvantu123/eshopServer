@@ -1,13 +1,14 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Filters
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Locations.API.Infrastructure.ActionResults;
+using Locations.API.Infrastructure.Exceptions;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System.Net;
+
+namespace Locations.API.Infrastructure.Filters
 {
-    using AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc.Filters;
-    using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.ActionResults;
-    using Microsoft.eShopOnContainers.Services.Locations.API.Infrastructure.Exceptions;
-    using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Logging;
-    using System.Net;
 
     public class HttpGlobalExceptionFilter : IExceptionFilter
     {

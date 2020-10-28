@@ -1,7 +1,8 @@
-﻿namespace Microsoft.eShopOnContainers.Services.Marketing.API.Infrastructure.Services
+﻿using Microsoft.AspNetCore.Http;
+using System;
+
+namespace Marketing.API.Infrastructure.Services
 {
-    using AspNetCore.Http;
-    using System;
 
     public class IdentityService : IIdentityService
     {
