@@ -1,0 +1,10 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Ordering.Domain.AggregatesModel.OrderAggregate
+{
+    public class Address : ValueObject
+    {
+    }
+}

@@ -10,8 +10,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Commands\" />
+    <Folder Include="Application\DomainEventHandlers\" />
+    <Folder Include="Application\IntegrationEvents\" />
+    <Folder Include="Application\Models\" />
+    <Folder Include="Application\Validations\" />
+    <Folder Include="Application\Queries\" />
     <Folder Include="Infrastructure\" />
-    <Folder Include="Setup\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventBus\EventBus.csproj" />
   </ItemGroup>
 
 
