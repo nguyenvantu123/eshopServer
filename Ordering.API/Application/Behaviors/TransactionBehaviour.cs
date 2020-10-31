@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using Ordering.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Ordering.API.Application.Behaviors
     {
 
         private readonly ILogger<TransactionBehaviour<TRequest, TResponse>> _logger;
+        private readonly OrderingContext OrderingContext;
 
 
         public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
